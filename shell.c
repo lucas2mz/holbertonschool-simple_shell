@@ -2,13 +2,13 @@
 
 int main(void)
 {
-	char *linea, *path = _getenv("PATH"), *full_path;
+	char *linea = NULL, *path = _getenv("PATH"), *full_path;
 	size_t size = 0;
 	ssize_t len = 0;
 	char **args = malloc(sizeof(char *) * 1024);
 	int status;
 	pid_t hijo;
-	
+
 	print2();
 	while (1)
 	{
@@ -16,10 +16,12 @@ int main(void)
 		len = getline(&linea, &size, stdin);
 		if (len == -1)
 		{
+			free(linea);
 			break;
 		}
 		if (strcmp(linea, "exit\n") == 0)
 		{
+			free(linea);
 			break;
 		}
 		args = tokenizar(linea, " \n\t");
