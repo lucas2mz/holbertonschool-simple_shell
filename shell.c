@@ -34,6 +34,8 @@ int main(void)
 		if (full_path == NULL)
 		{
 			printf("Shellzilla: No such file or directory\n");
+			for (i = 0, args[i] != NULL; i++)
+				free(args[i]);
 			free(args);
 			continue;
 		}
@@ -44,9 +46,11 @@ int main(void)
 			{
 				perror("Execve");
 				free(full_path);
+				for (i = 0, args[i] != NULL; i++)
+					free(args[i]);
 				free(args);
 				free(linea);
-				return(1);
+				exit(1);
 			}
 		}
 		else
