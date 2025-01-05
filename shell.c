@@ -6,7 +6,7 @@ int main(void)
 	size_t size = 0;
 	ssize_t len = 0;
 	char **args = malloc(sizeof(char *) * 1024);
-	int status, i;
+	int status;
 	pid_t hijo;
 
 	print2();
@@ -16,12 +16,10 @@ int main(void)
 		len = getline(&linea, &size, stdin);
 		if (len == -1)
 		{
-			free(linea);
 			break;
 		}
 		if (strcmp(linea, "exit\n") == 0)
 		{
-			free(linea);
 			break;
 		}
 		args = tokenizar(linea, " \n\t");
@@ -34,8 +32,6 @@ int main(void)
 		if (full_path == NULL)
 		{
 			printf("Shellzilla: No such file or directory\n");
-			for (i = 0; args[i] != NULL; i++)
-				free(args[i]);
 			free(args);
 			continue;
 		}
@@ -46,11 +42,9 @@ int main(void)
 			{
 				perror("Execve");
 				free(full_path);
-				for (i = 0; args[i] != NULL; i++)
-					free(args[i]);
 				free(args);
 				free(linea);
-				exit(1);
+				return (1);
 			}
 		}
 		else
