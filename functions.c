@@ -1,5 +1,53 @@
 #include "main.h"
+/*/
+char *_strdup(char *string)
+{
+	char *aux = NULL;
+	int i, j = 0, len = 0;
+	
+	if (string == NULL)
+		return (NULL);
+	while (string[j] != '\0')
+	{
+		len++;
+		j++;
+	}
+	
+	aux = malloc(sizeof(char *) * (len + 1));
 
+	if (aux == NULL)
+	{
+		return (NULL);
+	}
+
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		aux[i] = string[i];
+	}
+	aux[i] = '\0';
+	return (aux);
+}
+int _strcmp(char *string1, char *string2)
+{
+	int i = 0;
+	if (string1 == NULL || string2 == NULL)
+	{
+		return (-1);
+	}
+	while (string1[i] != '\0' && string2[i] != '\0')
+	{
+		if (string1[i] != string2[i])
+		{
+			return (-1);
+		}
+		i++;
+	}
+	if (string1[i] == '\0' && string2[i] == '\0')
+	{
+		return (0);
+	}
+	return (-1);
+} */
 char *_getenv(const char *name)
 {
 	extern char **environ;
