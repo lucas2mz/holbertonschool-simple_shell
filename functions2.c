@@ -1,8 +1,13 @@
 #include "main.h"
-
+/**
+ * ejecutar_comando - Executes command
+ * @full_path: The command to execute
+ * @args: Array null terminated
+ *
+ * Return: Always 0
+ */
 int ejecutar_comando(char *full_path, char **args)
 {
-	extern char **environ;
 	pid_t hijo;
 	int status;
 
@@ -13,7 +18,7 @@ int ejecutar_comando(char *full_path, char **args)
 		if (execve(full_path, args, environ) == -1)
 		{
 			perror("Execve");
-			return (1);
+			exit(127);
 		}
 	}
 	else
