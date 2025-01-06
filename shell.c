@@ -6,10 +6,12 @@ int main(void)
 	char **args;
 	int status;
 	pid_t hijo;
-
+	
 	while (1)
 	{
-		printf("Shellzilla$ ");
+		if (isatty(STDIN_FILENO))
+			printf("Shellzilla$ ");
+
 		if (leer_linea(&linea) == 0)
 			break;
 

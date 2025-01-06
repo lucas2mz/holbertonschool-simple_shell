@@ -21,17 +21,28 @@ char *_getenv(const char *name)
 
 char *check_command(char *command, char *path)
 {
-	char *full_path = malloc(sizeof(char *) * 1024);
-	char *copy_path = strdup(path), *result = NULL;
+	char *full_path = malloc(sizeof(char) * 1024);
+	char *copy_path = strdup(path);
 	struct stat st;
 	char *token;
+
+	if (!full_path || !copy_path)
+	{
+		free(full_path);
+		free(copy_path);
+		return NULL;
+	}
 
 	if (command[0] == '/')
 	{
 		if (access(command, X_OK) == 0)
 		{
+			free(copy_path);
+			free(full_path);
 			return (strdup(command));
 		}
+		free(copy_path);
+		free(full_path);
 		return (NULL);
 	}
 
@@ -44,9 +55,7 @@ char *check_command(char *command, char *path)
 		if (stat(full_path, &st) == 0)
 		{
 			free(copy_path);
-			result = strdup(full_path);
-			free(full_path);
-			return (result);
+			return (full_path);
 		}
 		token = strtok(NULL, ":");
 	}
@@ -78,7 +87,9 @@ void limpiar(char *linea, char **args, char *full_path)
 	if (linea)
 		free(linea);
 	if (args)
+	{
 		free(args);
+	}
 	if (full_path)
 		free(full_path);
 }
