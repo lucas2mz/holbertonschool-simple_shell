@@ -2,11 +2,8 @@
 
 int main(void)
 {
-	extern char **environ;
 	char *linea = NULL, *path = _getenv("PATH"), *full_path = NULL;
 	char **args;
-	int status;
-	pid_t hijo;
 	
 	while (1)
 	{
@@ -32,19 +29,7 @@ int main(void)
 			limpiar(linea, args, full_path);
 			continue;
 		}
-		hijo = fork();
-		if (hijo == 0)
-		{
-			if (execve(full_path, args, environ) == -1)
-			{
-				perror("Execve");
-				limpiar(linea, args, full_path);
-				exit(1);
-			}
-		}
-		else
-			wait(&status);
-
+		ejecutar_comando(full_path, args);
 		limpiar(linea, args, full_path);
 	}
 	free(linea);
