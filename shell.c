@@ -3,7 +3,7 @@
 int main(void)
 {
 	char *linea = NULL, *path = _getenv("PATH"), *full_path = NULL;
-	char **args = malloc(sizeof(char *) * 1024);
+	char **args;
 	int status;
 	pid_t hijo;
 
