@@ -1,7 +1,7 @@
 #include "main.h"
 
 int main(void)
-{
+	{
 	char *linea = NULL, *path = _getenv("PATH"), *full_path = NULL;
 	char **args;
 	
