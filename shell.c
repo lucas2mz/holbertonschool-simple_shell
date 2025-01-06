@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	extern char **environ;
 	char *linea = NULL, *path = _getenv("PATH"), *full_path = NULL;
 	char **args;
 	int status;
@@ -11,6 +12,9 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 			printf("Shellzilla$ ");
+
+		if (_getenv("TERM") == NULL)
+    			setenv("TERM", "xterm", 1);
 
 		if (leer_linea(&linea) == 0)
 			break;
@@ -31,7 +35,7 @@ int main(void)
 		hijo = fork();
 		if (hijo == 0)
 		{
-			if (execve(full_path, args, NULL) == -1)
+			if (execve(full_path, args, environ) == -1)
 			{
 				perror("Execve");
 				limpiar(linea, args, full_path);
