@@ -13,6 +13,12 @@ int ejecutar_comando(char *full_path, char **args)
 
 	hijo = fork();
 
+	if (hijo == -1)
+	{
+		perror("Fork");
+		return (1);
+	}
+
 	if (hijo == 0)
 	{
 		if (execve(full_path, args, environ) == -1)
