@@ -53,7 +53,7 @@ void main_function(void)
 		full_path = check_command(args[0], path);
 		if (full_path == NULL)
 		{
-			printf("Shellzilla: No such file or directory\n");
+			fprintf(stderr, "Shellzilla: No such file or directory\n");
 			limpiar(linea, args, full_path);
 			continue;
 		}
