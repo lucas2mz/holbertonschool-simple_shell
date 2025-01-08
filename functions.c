@@ -43,7 +43,7 @@ char *check_command(char *command, char *path)
 		return (NULL);
 	}
 
-	if (command[0] == '/')
+	if (command[0] == '/' || command[0] == '.')
 	{
 		if (access(command, X_OK) == 0)
 		{
