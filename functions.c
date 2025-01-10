@@ -8,15 +8,13 @@
 char *_getenv(const char *name)
 {
 	int i = 0;
-	char *token;
+	size_t len = strlen(name);
 
 	while (environ[i])
 	{
-		token = strtok(environ[i], "=");
-
-		if (strcmp(token, name) == 0)
+		if (strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
 		{
-			return (strtok(NULL, "="));
+			return (environ[i] + len + 1);
 		}
 		i++;
 	}
