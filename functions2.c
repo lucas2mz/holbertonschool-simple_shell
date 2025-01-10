@@ -34,12 +34,11 @@ void imprimir_env(void)
 {
 	int i = 0;
 
-	while (environ[i])
+	while (environ[i] != NULL)
 	{
-		printf("%s", environ[i]);
+		printf("%s\n", environ[i]);
 		i++;
 	}
-	printf("\n");
 }
 /**
  * main_function - Does all the calls for the program
@@ -63,7 +62,12 @@ void main_function(void)
 			free(args);
 			continue;
 		}
-
+		if (strcmp(args[0], "env") == 0)
+		{
+			imprimir_env();
+			limpiar(linea, args, NULL);
+			continue;
+		}
 		full_path = check_command(args[0], path);
 		if (full_path == NULL)
 		{
