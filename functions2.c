@@ -28,6 +28,20 @@ int ejecutar_comando(char *full_path, char **args)
 	return (0);
 }
 /**
+ * _env - Prints the enviroment
+ */
+void imprimir_env(void)
+{
+	int i = 0;
+
+	while (environ[i])
+	{
+		printf("%s", environ[i]);
+		i++;
+	}
+	printf("\n");
+}
+/**
  * main_function - Does all the calls for the program
  */
 void main_function(void)

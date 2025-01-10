@@ -136,6 +136,10 @@ int leer_linea(char **linea)
 	{
 		return (0);
 	}
+	if (strcmp(*linea, "env\n") == 0)
+	{
+		imprimir_env();
+	}
 
 	return (1);
 }
