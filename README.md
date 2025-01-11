@@ -1,15 +1,15 @@
-<h1  align="center">¡Nuestra Shell!!</h1>
+<h1  align="center">¡¡Our Shell!!</h1>
 
-<p align="center">En este proyecto implementaremos la unix shell command line interpreter ejecutando comandos entrantes que el usuario mande, para lograr esto usaremos:
+<p align="center">In this project we will implement the unix shell command line interpreter executing incoming commands that the user sends, to achieve this we will use:
 
-tokenizacion de comandos de entrada por el usuario
+tokenization of user input commands
 
-Buscando comandos ejecutables en el path
+Searching for executable commands in the path
 
-Agregando comandos como env, exit..
+Adding commands like env, exit..
 
-Nuestra shell lee la entrada del user, tokeniza y ejecuta el comando concreto con llamadas al sistema como execve, fork y wait.
-ejecuta hasta que el usuario la cierre</p>
+Our shell reads the user's input, tokenizes it, and executes the specific command with system calls like execve, fork, and wait.
+runs until the user closes it.</p>
 
 <h2  align="center">What We're Working With</h2>
 <p align="center">The project is divided into modular components, ensuring readability and maintainability.
@@ -25,9 +25,9 @@ ejecuta hasta que el usuario la cierre</p>
 <h2  align="center">Files</h2>
 <p align="center">
   <ul>
-  <li>Shell.c la función principal.</li>
-  <li>Functions.c, Functions2.c Agrupamos todos los archivos que auxilian la función Shell.c.</li>
-  <li>Main.h  archivo en la que declaramos funciones y librerías.</li>
+  <li>Shell.c the main function.</li>
+  <li>Functions.c, Functions2.c We group all the files that support the Shell.c function.</li>
+  <li>Main.h  file in which we declare functions and libraries.</li>
   </ul>
 </p>
 
@@ -39,4 +39,4 @@ ejecuta hasta que el usuario la cierre</p>
 
 <h2 align="center">Authors</h2>
 
-<p align="center">Este projecto fue codeado por Lucas Andrada y Owen Matusevicius. Cohort 25 </p>
+<p align="center">This project was co-authored by Lucas Andrada and Owen Matusevicius. Cohort 25 </p>
